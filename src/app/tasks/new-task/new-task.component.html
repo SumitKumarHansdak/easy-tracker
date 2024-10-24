@@ -1,0 +1,28 @@
+<div class="backdrop" (click)="onClose()"></div>
+<dialog open>
+    <h2>Add Task</h2>
+    <form (ngSubmit)="onSubmit()">
+        <p>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" [(ngModel)]="enteredTitle" />
+            <span *ngIf="formSubmitted && !isTitleValid">Please enter a valid title</span>
+        </p>
+
+        <p>
+            <label for="summary">Summary</label>
+            <textarea id="summary" rows="5" name="summary" [(ngModel)]="enteredSummary"></textarea>
+            <span *ngIf="formSubmitted && !isSummaryValid">Please enter a valid summary</span>
+        </p>
+
+        <p>
+            <label for="due-date">Due Date</label>
+            <input type="date" id="due-date" name="due-date" [(ngModel)]="enteredDate" />
+            <span *ngIf="formSubmitted && !isDateValid">Please enter a valid date</span>
+        </p>
+
+        <p class="actions">
+            <button type="button" (click)="onClose()">Cancel</button>
+            <button type="submit">Create</button>
+        </p>
+    </form>
+</dialog>
